@@ -3,7 +3,6 @@ let noteTitle;
 let noteText;
 let saveNoteBtn;
 let newNoteBtn;
-let clearBtn;
 let noteList;
 
 if (window.location.pathname === '/notes') {
@@ -73,7 +72,6 @@ const renderActiveNote = () => {
   }
 };
 
-// Save a new note
 const handleNoteSave = () => {
   const newNote = {
     title: noteTitle.value,
@@ -110,7 +108,7 @@ const handleNoteView = (e) => {
   renderActiveNote();
 };
 
-// Sets the activeNote to an empty object and allows the user to enter a new note
+// Sets the activeNote to and empty object and allows the user to enter a new note
 const handleNewNoteView = (e) => {
   activeNote = {};
   show(clearBtn);
@@ -187,8 +185,8 @@ const renderNoteList = async (notes) => {
 const getAndRenderNotes = () => getNotes().then(renderNoteList);
 
 if (window.location.pathname === '/notes') {
-  saveNoteBtn.addEventListener('click', handleNoteSave); // Correct integration
-  newNoteBtn.addEventListener('click', handleNewNoteView); // Correct integration
+  saveNoteBtn.addEventListener('click', handleNoteSave);
+  newNoteBtn.addEventListener('click', handleNewNoteView);
   clearBtn.addEventListener('click', renderActiveNote);
   noteForm.addEventListener('input', handleRenderBtns);
 }
